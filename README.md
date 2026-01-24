@@ -2,7 +2,15 @@
 nest g module todos
 nest g controller todos
 nest g service todos
-
+```
+### Fill this in .env
+```
+DB_HOST=****
+DB_PORT=****
+DB_USER=****
+DB_PASSWORD=****
+DB_NAME=****
+DB_SSL=****
 ```
 ### Create src/todos/entities/todo.entity.ts   
 ``` npm install class-validator class-transformer  ```
