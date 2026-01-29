@@ -25,7 +25,10 @@ app.useGlobalPipes(
 ```
 
 👉 This is production standard.
-
+# OPENAPI swagger
+```
+http://localhost:3000/api/docs
+```
 ### API response example for GET /todos
 ```
 {

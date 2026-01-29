@@ -23,9 +23,7 @@ import { Todo } from './todos/entities/todo.entity';
 
     entities: [Todo],
 
-    synchronize: false,
-
-    // ✅ MUST be false for this server
+    synchronize: false, 
     ssl: false,
   }),
 }),
