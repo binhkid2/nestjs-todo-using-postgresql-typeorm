@@ -1,3 +1,15 @@
+-- Create users table
+CREATE TABLE IF NOT EXISTS users (
+  id UUID PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  CONSTRAINT uq_users_email UNIQUE (email)
+);
+
+-- Index for fast email lookups (login / registration uniqueness check)
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+
 -- Create tasks table
 CREATE TABLE IF NOT EXISTS tasks (
   id UUID PRIMARY KEY,

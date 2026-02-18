@@ -13,12 +13,14 @@ import {
   ApiOperation,
   ApiQuery,
   ApiResponse,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 import { TodosService } from './todos.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @ApiTags('Tasks')
+@ApiBearerAuth('JWT')
 @Controller('/api/v1/tasks')
 export class TodosController {
   constructor(private readonly service: TodosService) {}

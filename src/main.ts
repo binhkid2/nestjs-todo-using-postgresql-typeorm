@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
@@ -16,11 +17,28 @@ async function bootstrap() {
     credentials: true,
   });
 
+  // ===== Global Validation Pipe =====
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+    }),
+  );
+
   // ===== Swagger =====
   const config = new DocumentBuilder()
     .setTitle('Todos API')
-    .setDescription('Task / Todo API (Spring-compatible schema)')
-    .setVersion('1.0') 
+    .setDescription('Task / Todo API with JWT Authentication')
+    .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        description: 'Enter your JWT access_token here',
+      },
+      'JWT',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
