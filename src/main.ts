@@ -20,9 +20,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Todos API')
     .setDescription('Task / Todo API (Spring-compatible schema)')
-    .setVersion('1.0')
-    .addServer('http://localhost:3000')
-    .addServer('https://java-spring-todos-api.rubito.jp')
+    .setVersion('1.0') 
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
